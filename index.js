@@ -147,6 +147,12 @@ function startChallenge() {
                     line4.style.display = 'inline-block';
                 }, 500);
 
+                // Update team name in the UI
+                const teamElement = document.querySelector('.team .timer-text');
+                if (teamElement) {
+                    teamElement.textContent = `Team: ${input1Value}`;
+                }
+
                 // Display line 5 after 1.5 seconds
                 setTimeout(() => {
                     line5.style.display = 'inline-block';
