@@ -7,6 +7,36 @@ if (svg) {
     console.error('Element not found');
 }
 
+// Enhanced particle system
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    document.querySelector('.particles').appendChild(particle);
+    
+    // Remove particle after animation
+    setTimeout(() => {
+        if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+        }
+    }, 15000);
+}
+
+// Create particles periodically
+setInterval(createParticle, 2000);
+
+
+// Add sparkle effect on button hover
+document.querySelector('.start-button').addEventListener('mouseenter', () => {
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+            createParticle();
+        }, i * 100);
+    }
+});
+
 
 
 function svgWidth() {
@@ -163,7 +193,7 @@ function startChallenge() {
 function submitAnswer1() {
     const challenge1Input = document.querySelector('.challenge-1-input');
 
-    if(challenge1Input.value === '1010100100') {
+    if(challenge1Input.value === 'O') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge1box = document.querySelector('.challenge-1');
@@ -180,7 +210,7 @@ function submitAnswer1() {
 function submitAnswer2() {
     const challenge2Input = document.querySelector('.challenge-2-input');
 
-    if(challenge2Input.value === '10110') {
+    if(challenge2Input.value === 'O') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge2box = document.querySelector('.challenge-2');
@@ -197,7 +227,7 @@ function submitAnswer2() {
 function submitAnswer3() {
     const challenge3Input = document.querySelector('.challenge-3-input');
 
-    if(challenge3Input.value === '1001100') {
+    if(challenge3Input.value === 'O') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge3box = document.querySelector('.challenge-3');
@@ -214,7 +244,7 @@ function submitAnswer3() {
 function submitAnswer4() {
     const challenge4Input = document.querySelector('.challenge-4-input');
 
-    if (challenge4Input.value === '111011111') {
+    if (challenge4Input.value === 'O') {
 
         alert(`Congratulations! You have completed all challenges.`);
 

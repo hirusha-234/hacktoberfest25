@@ -1,16 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+
+:root {
+  --bg: #1C1C3F;            /* Void - Dark background */
+  --accent: #aaaac7;        /* Blue Violet - Main accent */
+  --accent-2: #A0A0FF;      /* Lavendar - Secondary accent */
+  --text: #FFFFFF;          /* Space White - Primary text */
+  --text-secondary: #D0CCE3; /* Space Dust - Secondary text */
+  --text-muted: #5E577C;    /* Space Haze - Muted text */
+  --surface: #403F7D;      /* East Bay - Dark surface */
+  --surface-2: #5E577C;     /* Space Haze - Lighter surface */
+  --border: #5E577C;        /* Space Haze - Border color */
+  --gradient: linear-gradient(135deg, #5A5AB5 0%, #C2C2FF 100%);
+  --gradient-accent: linear-gradient(135deg, #A0A0FF 0%, #C2C2FF 100%);
+}
 
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(80, 218, 76);
+  background-color: var(--bg);
+  background-image: url('./images/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  color: var(--text);
+  line-height: 1.6;
 }
 
 .logo {
-  height: 60px;
+  height: 80px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 60px;
   display: block;
+  filter: brightness(1.2);
 }
 
 .svg-pattern {
@@ -22,35 +45,43 @@ body {
 
 .green-container {
   position: absolute;
-  background-color: rgb(24, 55, 23);
+  background-color: var(--accent-2);
   width: 100vw;
   height: 10vh;
   top: 90vh;
 }
 
 .title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 80px;
-  font-weight: 400;
-  color: rgb(24, 55, 23);
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--text);
   text-align: center;
-  margin-bottom: 30px;
-  padding-top: 10px;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  letter-spacing: -0.02em;
 }
 
 .bold {
-  font-weight: 600;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .description {
   margin-top: 0;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: rgb(24, 55, 23);
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-secondary);
   text-align: center;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 120px;
+  padding-right: 120px;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  line-height: 1.5;
 }
 
 .hdkpIz {
@@ -82,26 +113,65 @@ body {
 .start-button{
     display: block;
     margin: 0 auto;
-    margin-top: 145px;
-    padding: 10px 20px;
-    background-color: rgb(28, 28, 28);
-    color: rgb(243, 240, 224);
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 22px;
-    font-weight: 300;
-    border: none;
-    border-radius: 40px;
+    margin-top: 60px;
+    padding: 20px 40px;
+    background: var(--gradient);
+    color: white;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid var(--accent-2);
+    border-radius: 50px;
     cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 8px 32px rgba(90, 90, 181, 0.4),
+        0 0 0 0 rgba(160, 160, 255, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 12px 40px rgba(90, 90, 181, 0.6),
+        0 0 20px rgba(160, 160, 255, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: var(--gradient-accent);
+    border-color: var(--accent-2);
+}
+
+.start-button:hover::before {
+    left: 100%;
+}
+
+.start-button:active {
+    transform: translateY(-2px) scale(1.02);
+    transition: all 0.1s ease;
 }
 
 
 .terminal-title {
     display:  none;
-    padding: 8px;
-    font-family: "Space Grotesk", sans-serif;
-    color: rgb(243, 240, 224);
+    padding: 12px 16px;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    color: var(--text);
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
     white-space: nowrap;
     overflow: hidden;
     margin-left: auto;
@@ -116,11 +186,11 @@ body {
 
 .terminal-subtitle {
   display:  none;
-  padding: 8px;
-  font-family: "Space Grotesk", sans-serif;
-  color: rgb(80, 218, 76);
+  padding: 12px 16px;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  color: var(--accent);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   margin-left: auto;
@@ -135,7 +205,7 @@ body {
 .terminal-title::before {
     content: "hacktoberfest > ";
     font-weight: 600;
-    color: rgb(80, 218, 76);
+    color: var(--accent-2);
 }
 
 @keyframes typingPause {
@@ -155,20 +225,44 @@ body {
 }
 
 .terminal {
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 600px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 700px;
     max-width: 100%;
     overflow: hidden;
     padding-bottom: 20px;
     min-height: 400px;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.terminal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(160, 160, 255, 0.1) 50%, transparent 70%);
+    animation: terminal-shine 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes terminal-shine {
+    0%, 100% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
 }
 
 .terminal-header {
     display: flex;
     justify-content: flex-start;
-    background-color: #3a3a3a;
+    background-color: var(--surface-2);
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -204,12 +298,13 @@ body {
 .terminal-input{
     background-color: transparent;
     border: none;
-    color: rgb(243, 240, 224);
+    color: var(--text);
     width: 100%;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
     font-size: 16px;
     display: none;
     width: 400px;
+    font-weight: 400;
 }
 
 .terminal-input:focus{
@@ -222,14 +317,15 @@ body {
     margin-right: 30px;
     text-align: center;
     margin-top: 20px;
-    padding: 10px 20px;
-    background-color: rgb(28, 28, 28);
-    color: rgb(243, 240, 224);
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    border: none;
-    border-radius: 40px;
+    padding: 12px 24px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .team{
@@ -238,14 +334,15 @@ body {
     margin-left: 30px;
     text-align: center;
     margin-top: 20px;
-    padding: 10px 20px;
-    background-color: rgb(28, 28, 28);
-    color: rgb(243, 240, 224);
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    border: none;
-    border-radius: 40px;
+    padding: 12px 24px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -257,6 +354,47 @@ body {
   justify-content: center;
   margin-inline: 100px;
   margin-top: 50px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.challenge-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, var(--accent-2), transparent);
+  animation: challenge-rotate 4s linear infinite;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.challenge-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(160, 160, 255, 0.05) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+@keyframes challenge-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .left{
@@ -272,69 +410,251 @@ body {
 }
 
 .challenge-title span{
-  color: rgb(80, 218, 76);
+  color: var(--accent-2);
 }
 
 .challenge-title{
   align-items: center;
   display: inline-block;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 40px;
-  font-weight: 600;
-  color: rgb(243, 240, 224);
-  margin-bottom: 30px;
-  padding-top: 10px;
-  background-color: rgb(28, 28, 28);
-  padding-inline: 20px;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+  padding-top: 0;
+  background: transparent;
+  padding-inline: 0;
+  line-height: 1.3;
 }
 
 .challenge-hint{
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 18px;
   font-weight: 400;
-  color: rgb(28, 28, 28);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
 }
 
 .input-container input{
-  width: 50%;
-  padding: 10px;
-  font-family: "Space Grotesk", sans-serif;
+  width: 60%;
+  padding: 16px 20px;
+  font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 16px;
-  font-weight: 300;
-  border: none;
-  border-bottom: 1px solid rgb(28, 28, 28);
+  font-weight: 400;
+  border: 2px solid var(--border);
+  border-radius: 8px;
   margin-top: 20px;
-  background-color: transparent;
-  color: rgb(28, 28, 28);
+  background-color: var(--surface-2);
+  color: var(--text);
+  transition: all 0.3s ease;
 }
 
 .input-container input::placeholder{
-  color: rgb(28, 28, 28);
+  color: var(--text-secondary);
 }
 
 .input-container input:focus{
   outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(90, 90, 181, 0.1);
 }
 
 .submit{
   margin: 0 auto;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: rgb(28, 28, 28);
-  color: rgb(243, 240, 224);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 18px;
-  font-weight: 300;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: var(--gradient);
+  color: white;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
   border: none;
-  border-radius: 40px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(90, 90, 181, 0.3);
+}
+
+.submit:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(90, 90, 181, 0.4);
+  background: var(--gradient-accent);
 }
 
 .error{
-  color: red;
-  font-family: "Space Grotesk", sans-serif;
+  color: #ff4757;
+  font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+
+/* Particle Effects */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  animation: particle-float 10s linear infinite;
+  opacity: 0.6;
+}
+
+.particle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+
+.particle:nth-child(2) {
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 15s;
+}
+
+.particle:nth-child(3) {
+  left: 30%;
+  animation-delay: 4s;
+  animation-duration: 11s;
+}
+
+.particle:nth-child(4) {
+  left: 40%;
+  animation-delay: 6s;
+  animation-duration: 13s;
+}
+
+.particle:nth-child(5) {
+  left: 60%;
+  animation-delay: 1s;
+  animation-duration: 14s;
+}
+
+.particle:nth-child(6) {
+  left: 70%;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+
+.particle:nth-child(7) {
+  left: 80%;
+  animation-delay: 5s;
+  animation-duration: 16s;
+}
+
+.particle:nth-child(8) {
+  left: 90%;
+  animation-delay: 7s;
+  animation-duration: 9s;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Hero Section */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glowing Text Effect */
+.title {
+  text-shadow: 0 0 20px rgba(160, 160, 255, 0.3);
+}
+
+.bold {
+  text-shadow: 0 0 30px rgba(160, 160, 255, 0.5);
+}
+
+/* Enhanced Button with Glow */
+.start-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.start-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 48px;
+  }
+  
+  .description {
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .challenge-box {
+    margin-inline: 20px;
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .left {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .right {
+    width: 100%;
+  }
+  
+  .terminal {
+    width: 90%;
+  }
+  
+  .timer, .team {
+    position: relative;
+    margin: 10px auto;
+    display: inline-block;
+  }
+  
+  .particle {
+    display: none;
+  }
 }
 
 
