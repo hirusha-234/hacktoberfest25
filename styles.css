@@ -26,6 +26,7 @@ body {
   font-family: "Atkinson Hyperlegible", sans-serif;
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -39,8 +40,9 @@ body {
 .svg-pattern {
     margin-left: 0;
   position: absolute;
-  width: 100vw;
+  width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 .green-container {
@@ -683,6 +685,8 @@ body {
 .container {
   position: relative;
   z-index: 2;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Glowing Text Effect */
