@@ -199,7 +199,7 @@ function startChallenge() {
 function submitAnswer1() {
     const challenge1Input = document.querySelector('.challenge-1-input');
 
-    if(challenge1Input.value === 'O') {
+    if(challenge1Input.value === 'Cicada') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge1box = document.querySelector('.challenge-1');
@@ -216,7 +216,7 @@ function submitAnswer1() {
 function submitAnswer2() {
     const challenge2Input = document.querySelector('.challenge-2-input');
 
-    if(challenge2Input.value === 'O') {
+    if(challenge2Input.value === '07/07/07') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge2box = document.querySelector('.challenge-2');
@@ -233,7 +233,7 @@ function submitAnswer2() {
 function submitAnswer3() {
     const challenge3Input = document.querySelector('.challenge-3-input');
 
-    if(challenge3Input.value === 'O') {
+    if(challenge3Input.value === 'Password') {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge3box = document.querySelector('.challenge-3');
@@ -250,7 +250,7 @@ function submitAnswer3() {
 function submitAnswer4() {
     const challenge4Input = document.querySelector('.challenge-4-input');
 
-    if (challenge4Input.value === 'O') {
+    if (challenge4Input.value === 'Kannangara') {
 
         alert(`Congratulations! You have completed all challenges.`);
 
