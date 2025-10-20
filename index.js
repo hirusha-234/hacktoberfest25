@@ -196,10 +196,24 @@ function startChallenge() {
 // window.addEventListener("beforeunload", onConfirmRefresh, { capture: true });
 
 
+
+function rot13(str) {
+    return str.replace(/[A-Za-z]/g, (c) => {
+        const base = c <= 'Z' ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+    });
+}
+
+
+const ANSWER1_OBF = 'Pvpnqn';     
+const ANSWER2_OBF = '07/07/07';     
+const ANSWER3_OBF = 'Cnffjbeq';    
+const ANSWER4_OBF = 'Xnaanatnen';   
+
 function submitAnswer1() {
     const challenge1Input = document.querySelector('.challenge-1-input');
 
-    if(challenge1Input.value === 'Cicada') {
+    if(rot13(challenge1Input.value.trim()) === ANSWER1_OBF) {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge1box = document.querySelector('.challenge-1');
@@ -216,7 +230,7 @@ function submitAnswer1() {
 function submitAnswer2() {
     const challenge2Input = document.querySelector('.challenge-2-input');
 
-    if(challenge2Input.value === '07/07/07') {
+    if(rot13(challenge2Input.value.trim()) === ANSWER2_OBF) {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge2box = document.querySelector('.challenge-2');
@@ -233,7 +247,7 @@ function submitAnswer2() {
 function submitAnswer3() {
     const challenge3Input = document.querySelector('.challenge-3-input');
 
-    if(challenge3Input.value === 'Password') {
+    if(rot13(challenge3Input.value.trim()) === ANSWER3_OBF) {
         alert('Correct Password! You may proceed to the next challenge.');
 
         const challenge3box = document.querySelector('.challenge-3');
@@ -250,11 +264,31 @@ function submitAnswer3() {
 function submitAnswer4() {
     const challenge4Input = document.querySelector('.challenge-4-input');
 
-    if (challenge4Input.value === 'Kannangara') {
+    if (rot13(challenge4Input.value.trim()) === ANSWER4_OBF) {
+        const challenge4box = document.querySelector('.challenge-4');
+        const finishOverlay = document.querySelector('.finish-overlay');
 
-        alert(`Congratulations! You have completed all challenges.`);
+        // snapshot team
+        const teamElement = document.querySelector('.team .timer-text');
+        const teamName = teamElement ? teamElement.textContent.replace('Team: ', '') : '';
+        const finishTeam = document.getElementById('finish-team');
+        finishTeam.textContent = teamName || 'Team_Name';
 
-        location.reload();
+        // snapshot time left (do not stop underlying timer)
+        const finishTimeLeft = document.getElementById('finish-time-left');
+        finishTimeLeft.textContent = timer.textContent.replace('Time Left: ', '').trim();
+
+        // completion time
+        const finishCompletedAt = document.getElementById('finish-completed-at');
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        finishCompletedAt.textContent = `${hh}:${mm}:${ss}`;
+
+        // show overlay and hide the last challenge box
+        challenge4box.style.display = 'none';
+        finishOverlay.style.display = 'block';
     } else {
         alert('Incorrect Password! Try again.');
     }

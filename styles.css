@@ -589,6 +589,83 @@ body {
   background: var(--gradient-accent);
 }
 
+/* Finish overlay */
+.finish-overlay{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(28,28,63,0.85);
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.finish-card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 48px 56px;
+  width: min(1000px, 92vw);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finish-title{
+  text-align: center;
+  font-size: 36px;
+  margin: 0 0 12px 0;
+}
+
+.finish-team{
+  text-align: center;
+  background: #FFFFFF;
+  color: #1C1C3F;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin: 0 auto 28px auto;
+  font-weight: 700;
+}
+
+.finish-meta{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin: 10px 0 26px 0;
+}
+
+.finish-block{
+  text-align: center;
+}
+
+.finish-label{
+  color: var(--text-secondary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.finish-value{
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.finish-divider{
+  width: 2px;
+  height: 64px;
+  background: rgba(255,255,255,0.2);
+}
+
+.finish-actions{
+  display: flex;
+  justify-content: center;
+}
+
 .error{
   color: #ff4757;
   font-family: "Atkinson Hyperlegible", sans-serif;
