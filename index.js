@@ -210,11 +210,49 @@ const ANSWER2_OBF = '07/07/07';
 const ANSWER3_OBF = 'Cnffjbeq';    
 const ANSWER4_OBF = 'Xnaanatnen';   
 
+
+// Notification function
+function showNotification(message, isSuccess) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background: ${isSuccess ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'};
+        color: white;
+        padding: 2rem 3rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        font-size: 1.2rem;
+        font-weight: 600;
+        z-index: 10000;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.2);
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 10);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        setTimeout(() => notification.remove(), 300);
+    }, 2500);
+}
+
+
 function submitAnswer1() {
     const challenge1Input = document.querySelector('.challenge-1-input');
 
     if(rot13(challenge1Input.value.trim()) === ANSWER1_OBF) {
-        alert('Correct Password! You may proceed to the next challenge.');
+        showNotification('Correct Password! You may proceed to the next challenge.', true);
 
         const challenge1box = document.querySelector('.challenge-1');
         const challenge2box = document.querySelector('.challenge-2');
@@ -223,7 +261,7 @@ function submitAnswer1() {
         challenge2box.style.display = 'flex';
     }
     else {
-        alert('Incorrect Password! Try again.');
+        showNotification(' Incorrect Password! Try again.', false);
     }
 }
 
@@ -231,7 +269,7 @@ function submitAnswer2() {
     const challenge2Input = document.querySelector('.challenge-2-input');
 
     if(rot13(challenge2Input.value.trim()) === ANSWER2_OBF) {
-        alert('Correct Password! You may proceed to the next challenge.');
+        showNotification('Correct Password! You may proceed to the next challenge.', true);
 
         const challenge2box = document.querySelector('.challenge-2');
         const challenge3box = document.querySelector('.challenge-3');
@@ -240,7 +278,7 @@ function submitAnswer2() {
         challenge3box.style.display = 'flex';
     }
     else {
-        alert('Incorrect Password! Try again.');
+        showNotification(' Incorrect Password! Try again.', false);
     }
 }
 
@@ -248,7 +286,7 @@ function submitAnswer3() {
     const challenge3Input = document.querySelector('.challenge-3-input');
 
     if(rot13(challenge3Input.value.trim()) === ANSWER3_OBF) {
-        alert('Correct Password! You may proceed to the next challenge.');
+        showNotification('Correct Password! You may proceed to the next challenge.', true);
 
         const challenge3box = document.querySelector('.challenge-3');
         const challenge4box = document.querySelector('.challenge-4');
@@ -257,7 +295,7 @@ function submitAnswer3() {
         challenge4box.style.display = 'flex';
     }
     else {
-        alert('Incorrect Password! Try again.');
+        showNotification(' Incorrect Password! Try again.', false);
     }
 }
 
@@ -290,6 +328,6 @@ function submitAnswer4() {
         challenge4box.style.display = 'none';
         finishOverlay.style.display = 'block';
     } else {
-        alert('Incorrect Password! Try again.');
+        showNotification(' Incorrect Password! Try again.', false);
     }
 }
