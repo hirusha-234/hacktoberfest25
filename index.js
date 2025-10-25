@@ -198,14 +198,15 @@ function startChallenge() {
 
 
 function rot13(str) {
-    return str.replace(/[A-Za-z]/g, (c) => {
+    const decoded = str.replace(/[A-Za-z]/g, (c) => {
         const base = c <= 'Z' ? 65 : 97;
         return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
     });
+    return decoded.charAt(0).toUpperCase() + decoded.slice(1).toLowerCase();
 }
 
 
-const ANSWER1_OBF = 'Pvpnqn';     
+const ANSWER1_OBF = 'Pvpnqn';      
 const ANSWER2_OBF = '07/07/07';     
 const ANSWER3_OBF = 'Cnffjbeq';    
 const ANSWER4_OBF = 'Xnaanatnen';   
@@ -251,7 +252,7 @@ function showNotification(message, isSuccess) {
 function submitAnswer1() {
     const challenge1Input = document.querySelector('.challenge-1-input');
 
-    if(rot13(challenge1Input.value.trim()) === ANSWER1_OBF) {
+    if(rot13(challenge1Input.value.trim()) === 'cicada' || 'CICADA' || 'Cicada') {
         showNotification('Correct Password! You may proceed to the next challenge.', true);
 
         const challenge1box = document.querySelector('.challenge-1');
@@ -302,7 +303,7 @@ function submitAnswer3() {
 function submitAnswer4() {
     const challenge4Input = document.querySelector('.challenge-4-input');
 
-    if (rot13(challenge4Input.value.trim()) === ANSWER4_OBF) {
+    if (rot13(challenge4Input.value.trim()) === 'Kannangara' || 'KANNANGARA' || 'kannangara') {
         const challenge4box = document.querySelector('.challenge-4');
         const finishOverlay = document.querySelector('.finish-overlay');
 
